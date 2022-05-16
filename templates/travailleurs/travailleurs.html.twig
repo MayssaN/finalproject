@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>Métiers</h3>
+                        <h3>Travailleurs</h3>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <div class="thumb">
                             <img src="/uploads/images/trav/{{travailleur.image}}" alt="">
                         </div>
-                        <a href={{ path('app_travailleur',{'id':travailleur.id})}}><h4>{{travailleur.prenom}}</h4></a>
+                        <a href={{ path('app_travailleur',{'id':travailleur.id})}}><h4>{{travailleur.prenom}} {{travailleur.nom}}</h4></a>
                      
                     </div>
                 </div>
@@ -53,16 +53,6 @@
         </div>
     </div>
     <!-- featured_candidates_area_end  -->
-
-
-
-
-
-
-
-
-
-
 
 
 {% endblock %}

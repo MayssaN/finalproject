@@ -1,0 +1,67 @@
+{% extends 'base3.html.twig' %}
+
+{% block name %}
+         
+
+  <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-6">
+                        <div class="slider_text">
+                            <h5 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">4536+ Jobs listed</h5>
+                            <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">chercher votre service</h3>
+                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">We provide online instant cash loans with quick approval that suit your term length</p>
+                            <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
+                                <a href="#" class="boxed-btn3">Upload your Resume</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s" data-wow-delay=".2s">
+            <img src="img/banner/illustration.png" alt="">
+        </div>
+    </div>
+    <!-- slider_area_end -->
+
+    
+
+
+
+
+    <!-- popular_catagory_area_start  -->
+    <div class="popular_catagory_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title mb-40">
+                        <h3>Catégories popolaires</h3>
+                    </div>
+                </div>
+            </div>
+       
+            <div class="row">
+                       {% for metier in metiers %}       
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                   
+                    <div class="single_catagory">
+                        <a href="{{ path('app_list',{'id':metier.id})}}"><h4>{{metier.titre}}</h4></a>
+                        <p> <span>{{ nb }} </span> {{metier.titre}} </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+                    
+            
+             
+        </div>
+    </div>
+    <!-- popular_catagory_area_end  -->
+
+   
+
+
+{% endblock %}

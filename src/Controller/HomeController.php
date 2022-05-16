@@ -14,18 +14,18 @@ class HomeController extends AbstractController
 {
     
  /**
-     * @Route("/", name="app_home")
+     * @Route("/home", name="app_home")
      */
     public function allmetier(Request $request): Response
     {
+        $nb = $request->query->get('nb'); //method GET 
         $metiers = $this->getDoctrine()->getRepository(Metier::class)->findAll();
         
        
-        return $this->render('home/index.html.twig', ["metiers" => $metiers]);
+        return $this->render('home/index.html.twig', ["metiers" => $metiers,"nb" =>$nb]);
     }
 
-
-    /**
+       /**
      * @Route("/list/{id}", name="app_list")
      */
     
@@ -33,21 +33,12 @@ class HomeController extends AbstractController
     {
         $metier=$this->getDoctrine()->getRepository(Metier::class)->find($id) ;
         $travailleurs= $metier->getTravailleurs();
-        return $this->render('home/jj.html.twig', ["travailleurs" => $travailleurs]);
+        return $this->render('home/index.html.twig', ["travailleurs" => $travailleurs]);
     }
 
+   
 
 
- /**
-     * @Route("/trav/{id}", name="app_travailleur")
-     */
-    
-    public function detail($id): Response
-    {
-        $travailleur=$this->getDoctrine()->getRepository(Travailleur::class)->find($id) ;
-        
-        return $this->render('home/detail.html.twig', ["travailleur" => $travailleur]);
-    }
 
 
 }

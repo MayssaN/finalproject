@@ -16,7 +16,7 @@ class Travailleur2Type extends AbstractType
             ->add('prenom')
             ->add('email')
             ->add('telph')
-            ->add('createdAt')
+            ->add('createdAt' )
             ->add('updatedAt')
             ->add('image')
             ->add('metier')
@@ -29,4 +29,5 @@ class Travailleur2Type extends AbstractType
             'data_class' => Travailleur::class,
         ]);
     }
+    
 }

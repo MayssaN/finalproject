@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Metier;
+use App\Entity\User;
 use App\Entity\Travailleur;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -31,6 +32,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud ('Metier', 'fa fa-home',Metier::class);
         yield MenuItem::linkToCrud ('Travailleur', 'fa fa-home',Travailleur::class);
+        yield MenuItem::linkToCrud ('user', 'fa fa-home',User::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

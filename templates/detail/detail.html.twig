@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>Software Engineer</h3>
+                        <h3>Détails</h3>
                     </div>
                 </div>
             </div>
@@ -24,35 +24,29 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 
-                                   <img src="/uploads/images/trav/{{travailleur.image}}" alt="">
+                                <img src="/uploads/images/trav/{{travailleur.image}}" alt="">
                                 
                                 <div class="jobs_conetent">
-                                    <a href="#"><h4>{{travailleur.nom}} {{travailleur.prenom}}</h4></a>
+                                    <a href="#"> <h4>{{travailleur.nom}} {{travailleur.prenom}}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i></p>
+                                            <p> <i class="fa fa-map-marker"></i> {{travailleur.lieu}}</p>
                                         </div>
-                                        <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
-                                        </div>
+                                     
                                     </div>
                                 </div>
                             </div>
-                            <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
-                                </div>
-                            </div>
+                         
                         </div>
                     </div>
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
-                            <h4>Job description</h4>
+                            <h4>description</h4>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
                             <p>Variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
                         </div>
                         <div class="single_wrap">
-                            <h4>Responsibility</h4>
+                            <h4>Formation</h4>
                             <ul>
                                 <li>The applicants should have experience in the following areas.
                                 </li>
@@ -62,7 +56,7 @@
                             </ul>
                         </div>
                         <div class="single_wrap">
-                            <h4>Qualifications</h4>
+                            <h4>Expérience professionelles</h4>
                             <ul>
                                 <li>The applicants should have experience in the following areas.
                                 </li>
@@ -72,18 +66,18 @@
                             </ul>
                         </div>
                         <div class="single_wrap">
-                            <h4>Benefits</h4>
+                            <h4>conditions</h4>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
                         </div>
                     </div>
                     <div class="apply_job_form white-bg">
      
-                        <h4>Apply for the job</h4>
+                        <h4>Avoir le service</h4>
                         <form action="#">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Your name">
+                                        <input type="text" placeholder="Nom & Prenom">
                                     </div>
                                 </div>
 
@@ -93,32 +87,22 @@
                                         <input type="text" placeholder="Email">
                                     </div>
                                 </div>
-
-                                <div class="col-md-12">
+                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Website/Portfolio link">
+                                        <input type="text" placeholder="Adresse ">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                          <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                          </button>
-                                        </div>
-                                        <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-                                          <label class="custom-file-label" for="inputGroupFile03">Upload CV</label>
-                                        </div>
-                                      </div>
-                                </div>
+
+                               
+                              
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <textarea name="#" id="" cols="30" rows="10" placeholder="Coverletter"></textarea>
+                                        <textarea name="#" id="" cols="30" rows="10" placeholder="message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="submit_btn">
-                                        <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
+                                        <button class="boxed-btn3 w-100" type="submit">avoir</button>
                                     </div>
                                 </div>
                             </div>
@@ -128,15 +112,14 @@
                 <div class="col-lg-4">
                     <div class="job_sumary">
                         <div class="summery_header">
-                            <h3>Job Summery</h3>
+                            <h3>Résumé du travail</h3>
                         </div>
                         <div class="job_content">
                             <ul>
-                                <li>Published on: <span>12 Nov, 2019</span></li>
-                                <li>Vacancy: <span>2 Position</span></li>
-                                <li>Salary: <span>50k - 120k/y</span></li>
-                                <li>Location: <span>California, USA</span></li>
-                                <li>Job Nature: <span> Full-time</span></li>
+                                <li>Publié le: <span>{{travailleur.createdAt | date("d/m/Y")}}</span></li>
+                                <li>Salaire: <span>30-50DT</span></li>
+                                <li>Lieu: <span>{{travailleur.lieu}}</span></li>
+                                <li>Nature du travail: <span> À temps plein</span></li>
                             </ul>
                         </div>
                     </div>
@@ -149,35 +132,7 @@
                             <li><a href="#"> <i class="fa fa-envelope"></i></a> </li>
                         </ul>
                     </div>
-                    <div class="job_location_wrap">
-                        <div class="job_lok_inner">
-                            <div id="map" style="height: 200px;"></div>
-                            <script>
-                              function initMap() {
-                                var uluru = {lat: -25.363, lng: 131.044};
-                                var grayStyles = [
-                                  {
-                                    featureType: "all",
-                                    stylers: [
-                                      { saturation: -90 },
-                                      { lightness: 50 }
-                                    ]
-                                  },
-                                  {elementType: 'labels.text.fill', stylers: [{color: '#ccdee9'}]}
-                                ];
-                                var map = new google.maps.Map(document.getElementById('map'), {
-                                  center: {lat: -31.197, lng: 150.744},
-                                  zoom: 9,
-                                  styles: grayStyles,
-                                  scrollwheel:  false
-                                });
-                              }
-                              
-                            </script>
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
-                            
-                          </div>
-                    </div>
+                 
                 </div>
             </div>
         </div>

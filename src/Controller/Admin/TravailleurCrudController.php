@@ -26,6 +26,8 @@ class TravailleurCrudController extends AbstractCrudController
             ImageField::new('image')->setBasePath('uploads/images/trav/')->setUploadDir('public/uploads/images/trav'),
             
             TextField::new('prenom'),
+               
+            TextField::new('lieu'),
             TextField::new('email'),
             IntegerField::new('telph'),
             AssociationField::new('metier'),

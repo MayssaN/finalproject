@@ -72,6 +72,11 @@ class Travailleur
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lieu;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -142,6 +147,8 @@ class Travailleur
         return $this->nom;
     }
 
+   
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -162,6 +169,18 @@ class Travailleur
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getLieu(): ?string
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(string $lieu): self
+    {
+        $this->lieu = $lieu;
 
         return $this;
     }
