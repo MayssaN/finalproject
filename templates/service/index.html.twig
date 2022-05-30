@@ -1,17 +1,15 @@
 {% extends 'base3.html.twig' %}
 
 
+
 {% block name %}
 
-
-
-  <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1">
+ <div class="bradcam_area bradcam_bg_1">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>Métiers</h3>
+                        <h3>Demandes</h3>
                     </div>
                 </div>
             </div>
@@ -19,49 +17,79 @@
     </div>
     <!--/ bradcam_area  -->
 
-    <!-- featured_candidates_area_start  -->
-    <div class="featured_candidates_area candidate_page_padding">
+    <!-- job_listing_area_start  -->
+    <div class="job_listing_area plus_padding">
         <div class="container">
-    
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <div class="single_candidates text-center">
-                        <div class="thumb">
-                            <img src="img/candiateds/1.png" alt="">
+            
+                
+                <div class="col-lg-9">
+                   
+
+                    <div class="job_lists m-0">
+                          <div class="row">
+                               {% for p in demandes %}
+                            <div class="col-lg-12 col-md-12">
+                                <div class="single_jobs white-bg d-flex justify-content-between">
+                                    
+                                    <div class="jobs_left d-flex align-items-center">
+                                     
+
+                                        
+                                        
+                                      
+                                        <div class="jobs_conetent">
+                                             <h4>Travailleur: <a href="">{{p.travailleur.prenom}} {{p.travailleur.nom}}</a></h4>
+                                             
+                                            <p> Mon Nom : {{p.utilisateur.nom}}</p>
+                                              <p> Message: {{p.message}}</p>
+                                            <div class="links_locat d-flex align-items-center">
+                                                <div class="location">
+                                                    <p> <i class="fa fa-map-marker"></i> Mon adresse :{{p.addresse}}</p>
+                                                </div>
+                                                <div class="location">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                                                          
+
+                                    </div>
+                                    <div class="jobs_right">
+                                        <div class="apply_now">
+                                            
+                                          
+                                             <a href="{{ path('app_demande_delete',{'id':p.id})}}" class="boxed-btn4"> Annuler</a>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                              </div>
+                             {% endfor  %}
+                          </div>
+                            
+                            
+                           
+                                    
+                                  
+                              
+                           
                         </div>
-                        <a href="#"><h4>jjj</h4></a>
-                        <p>Software Engineer</p>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="pagination_wrap">
+                                    <ul>
+                                        <li><a href="#"> <i class="ti-angle-left"></i> </a></li>
+                                        <li><a href="#"><span>01</span></a></li>
+                                        <li><a href="#"><span>02</span></a></li>
+                                        <li><a href="#"> <i class="ti-angle-right"></i> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-               
-               
-            </div>
-        
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="pagination_wrap">
-                        <ul>
-                            <li><a href="#"> <i class="ti-angle-left"></i> </a></li>
-                            <li><a href="#"><span>01</span></a></li>
-                            <li><a href="#"><span>02</span></a></li>
-                            <li><a href="#"> <i class="ti-angle-right"></i> </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
-    <!-- featured_candidates_area_end  -->
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- job_listing_area_end  -->
 {% endblock %}

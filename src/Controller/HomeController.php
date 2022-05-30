@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 use App\Entity\Metier;
+use App\Entity\Actualite;
 use App\Entity\Travailleur;
 use App\Repository\MetierRepository;
+use App\Repository\ActualiteRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class HomeController extends AbstractController
@@ -20,9 +22,9 @@ class HomeController extends AbstractController
     {
         $nb = $request->query->get('nb'); //method GET 
         $metiers = $this->getDoctrine()->getRepository(Metier::class)->findAll();
-        
+        $actualites=$this->getDoctrine()->getRepository(Actualite::class)->findALL() ;
        
-        return $this->render('home/index.html.twig', ["metiers" => $metiers,"nb" =>$nb]);
+        return $this->render('home/index.html.twig', ["metiers" => $metiers,"nb" =>$nb,"actualite"=>$actualites]);
     }
 
        /**
@@ -36,9 +38,13 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', ["travailleurs" => $travailleurs]);
     }
 
-   
+    
+    
 
-
+    
 
 
 }
+
+
+

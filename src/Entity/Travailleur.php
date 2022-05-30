@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TravailleurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -45,17 +47,7 @@ class Travailleur
      */
     private $metier;
 
-
- 
-    
-
-
-
-
-
-
-
-    /**
+ /**
      * @ORM\Column(type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
@@ -76,6 +68,43 @@ class Travailleur
      * @ORM\Column(type="string", length=255)
      */
     private $lieu;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Demande::class, mappedBy="travailleur")
+     */
+    private $demandes;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $formation;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $experiance;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $condi;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Comentaire::class, mappedBy="travailleur")
+     */
+    private $comentaires;
+
+    public function __construct()
+    {
+        $this->demandes = new ArrayCollection();
+        $this->comentaires = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -185,6 +214,115 @@ class Travailleur
         return $this;
     }
 
+    /**
+     * @return Collection<int, Demande>
+     */
+    public function getDemandes(): Collection
+    {
+        return $this->demandes;
+    }
+
+    public function addDemande(Demande $demande): self
+    {
+        if (!$this->demandes->contains($demande)) {
+            $this->demandes[] = $demande;
+            $demande->setTravailleur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemande(Demande $demande): self
+    {
+        if ($this->demandes->removeElement($demande)) {
+            // set the owning side to null (unless already changed)
+            if ($demande->getTravailleur() === $this) {
+                $demande->setTravailleur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getFormation(): ?string
+    {
+        return $this->formation;
+    }
+
+    public function setFormation(string $formation): self
+    {
+        $this->formation = $formation;
+
+        return $this;
+    }
+
+    public function getExperiance(): ?string
+    {
+        return $this->experiance;
+    }
+
+    public function setExperiance(string $experiance): self
+    {
+        $this->experiance = $experiance;
+
+        return $this;
+    }
+
+    public function getCondi(): ?string
+    {
+        return $this->condi;
+    }
+
+    public function setCondi(string $condi): self
+    {
+        $this->condi = $condi;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comentaire>
+     */
+    public function getComentaires(): Collection
+    {
+        return $this->comentaires;
+    }
+
+    public function addComentaire(Comentaire $comentaire): self
+    {
+        if (!$this->comentaires->contains($comentaire)) {
+            $this->comentaires[] = $comentaire;
+            $comentaire->setTravailleur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComentaire(Comentaire $comentaire): self
+    {
+        if ($this->comentaires->removeElement($comentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($comentaire->getTravailleur() === $this) {
+                $comentaire->setTravailleur(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 
 
   

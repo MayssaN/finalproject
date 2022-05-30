@@ -57,7 +57,7 @@
                                             <li><a href="{{path('app_categories')}}">Catégorie</a></li>
                                             <li><a href="#">service <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="{{path('app_service_metier')}}">vos commandes</a></li>
+                                                    <li><a href="{{path('app_list_service',{'id':app.user.id})}}">vos demandes</a></li>
                                                     <li><a href="job_details.html">vos réponses</a></li>
                                                     
                                                 </ul>
@@ -110,7 +110,7 @@
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                             <div class="footer_logo">
                                 <a href="#">
-                                    <img src="img/logo.png" alt="">
+                                    <!-- <img src="img/logo.png" alt=""> -->
                                 </a>
                             </div>
                             <p>

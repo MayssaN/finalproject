@@ -8,3 +8,5 @@ vich_uploader:
             namer:  Vich\UploaderBundle\Naming\UniqidNamer
             delete_on_remove: true 
             delete_on_update: true 
+
+   

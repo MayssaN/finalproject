@@ -1,0 +1,134 @@
+{% extends 'base3.html.twig' %}
+
+
+
+{% block name %}
+
+
+<!-- bradcam_area  -->
+  <div class="bradcam_area bradcam_bg_1">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="bradcam_text">
+                      <h3>Comentaires</h3>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--/ bradcam_area  -->
+
+   <!--================Blog Area =================-->
+   <section class="blog_area single-post-area section-padding">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 posts-list">
+               <div class="single-post">
+                  <div class="feature-img">
+                     
+                  </div>
+                
+               </div>
+             
+               <div class="blog-author">
+                  <div class="media align-items-center">
+                    <img src="/uploads/images/trav/{{travailleur.image}}" alt="">
+                                
+                     <div class="media-body">
+                        <a href="#">
+                           <h4>{{travailleur.nom}} {{travailleur.prenom}}</h4>
+                        </a>
+                        <p>{{travailleur.description}}</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="comments-area">
+                  <h4> {{nb}}Comentaires </h4>
+                  <div class="comment-list">
+                       {% for c in comt %}  
+                     <div class="single-comment justify-content-between d-flex">
+                                 
+                        <div class="user justify-content-between d-flex">
+                        
+                           <div class="desc">
+                              <p class="comment">
+                              <a href="#">{{c.utilisateur.nom}}</a>
+                              </p>
+                              <div class="d-flex justify-content-between">
+                                 <div class="d-flex align-items-center">
+                                    <h5>
+                                       {{c.comentaire}}  
+                                    </h5>
+                                    <p class="date">{{c.date | date("d/m/Y -- h:m:s")}}</p>
+                                 </div>
+                               
+                              </div>
+                           </div>
+                        </div>
+                                  
+                     </div>
+                       {% endfor %} 
+                  </div>
+                  
+                  
+
+
+               </div>
+
+
+
+
+
+
+
+
+                <div class="comment-form">
+                  <h4>mettre un commentaire</h4>
+                  
+                     
+                          {{ form_start(monform) }}
+                        <div class="col-12">
+                           <div class="form-group">
+                               {{ form_widget(monform.comentaire) }}
+                           </div>
+                        </div>
+                      
+                        
+                        <div class="col-12">
+                           <div class="form-group">
+                             {{form_widget(monform.travailleur,{'value':travailleur.id}) }}
+                        </div>
+
+                       <div class="col-12">
+                           <div class="form-group">
+                           {{ form_row(monform.utilisateur,{'value':app.user.id})}}
+                        </div>
+                        <div class="form-group">
+                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Valider commentaire</button>
+                     </div>
+                     </div>
+                       {{ form_end(monform) }}
+                     
+
+                    
+               </div>
+            </div>
+            <div class="col-lg-4">
+               <div class="blog_right_sidebar">
+              
+             
+                  
+                
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--================ Blog Area end =================-->
+
+    
+                         
+          
+
+{% endblock %}

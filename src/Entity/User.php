@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -42,6 +44,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $nom;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Demande::class, mappedBy="utilisateur")
+     */
+    private $demandes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Comentaire::class, mappedBy="utilisateur")
+     */
+    private $comentaires;
+
+    public function __construct()
+    {
+        $this->demandes = new ArrayCollection();
+        $this->comentaires = new ArrayCollection();
+    }
+
+  
     public function getId(): ?int
     {
         return $this->id;
@@ -143,5 +162,68 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    
+    /**
+     * @return Collection<int, Demande>
+     */
+    public function getDemandes(): Collection
+    {
+        return $this->demandes;
+    }
+
+    public function addDemande(Demande $demande): self
+    {
+        if (!$this->demandes->contains($demande)) {
+            $this->demandes[] = $demande;
+            $demande->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemande(Demande $demande): self
+    {
+        if ($this->demandes->removeElement($demande)) {
+            // set the owning side to null (unless already changed)
+            if ($demande->getUtilisateur() === $this) {
+                $demande->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+ 
+    public function __toString() {
+        return $this->nom;
+    }
+
+    /**
+     * @return Collection<int, Comentaire>
+     */
+    public function getComentaires(): Collection
+    {
+        return $this->comentaires;
+    }
+
+    public function addComentaire(Comentaire $comentaire): self
+    {
+        if (!$this->comentaires->contains($comentaire)) {
+            $this->comentaires[] = $comentaire;
+            $comentaire->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComentaire(Comentaire $comentaire): self
+    {
+        if ($this->comentaires->removeElement($comentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($comentaire->getUtilisateur() === $this) {
+                $comentaire->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
 }

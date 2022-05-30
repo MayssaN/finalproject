@@ -7,6 +7,12 @@
     <div class="slider_area">
         <div class="single_slider  d-flex align-items-center slider_bg_1">
             <div class="container">
+               {% for message in app.flashes('notice') %}
+    
+    <div class="alert alert-success" role="alert">
+  {{ message }}
+</div>
+{% endfor %} 
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-6">
                         <div class="slider_text">
@@ -27,60 +33,7 @@
     </div>
     <!-- slider_area_end -->
 
-    <!-- catagory_area -->
-    <div class="catagory_area">
-        <div class="container">
-            <div class="row cat_search">
-                <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <input type="text" placeholder="Search keyword">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <select class="wide" >
-                            <option data-display="Location">Location</option>
-                            <option value="1">Dhaka</option>
-                            <option value="2">Rangpur</option>
-                            <option value="4">Sylet</option>
-                          </select>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <select class="wide">
-                            <option data-display="Category">Category</option>
-                            <option value="1">Category 1</option>
-                            <option value="2">Category 2</option>
-                            <option value="4">Category 3</option>
-                          </select>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-12">
-                    <div class="job_btn">
-                        <a href="#" class="boxed-btn3">Rechercher service</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="popular_search d-flex align-items-center">
-                        <span>Recherche populaire:</span>
-                        {% for metier in metiers %}
-                        <ul>
-                            <li>
-                            <a href="#">Design Creative</a>
-                            
-                            </li>
-                            
-
-                        </ul>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 
     <!--/ catagory_area -->
 
@@ -129,103 +82,28 @@
                     </div>
                 </div>
             </div>
+             {% for act in actualite %} 
             <div class="row">
+        
                 <div class="col-lg-12">
                     <div class="candidate_active owl-carousel">
+                    
                         <div class="single_candidates text-center">
+                           
                             <div class="thumb">
-                                <img src="" alt="">
+                             <img src="/uploads/images/trav/{{act.image}}" alt="">
                             </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
+                            <a href="{{path('app_categories')}}"><h4>{{act.titre}}</h4></a>
+                            <p>**********</p>
+
+                            
                         </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="img/candiateds/6.png" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="img/candiateds/7.png" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="img/candiateds/8.png" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="img/candiateds/9.png" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="img/candiateds/9.png" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="img/candiateds/10.png" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="img/candiateds/3.png" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
-                        <div class="single_candidates text-center">
-                            <div class="thumb">
-                                <img src="img/candiateds/4.png" alt="">
-                            </div>
-                            <a href="#"><h4>Markary Jondon</h4></a>
-                            <p>Software Engineer</p>
-                        </div>
+                    
                     </div>
                 </div>
+                  
             </div>
+              {% endfor %}  
         </div>
     </div>
     <!-- featured_candidates_area_end  -->
@@ -246,8 +124,8 @@
                         <div class="thumb">
                             <img src="img/svg_icon/5.svg" alt="">
                         </div>
-                        <a href="jobs.html"><h3>Snack Studio</h3></a>
-                        <p> <span>50</span> Available position</p>
+                        <a href="jobs.html"><h3>Companie1</h3></a>
+                        
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
@@ -255,8 +133,8 @@
                         <div class="thumb">
                             <img src="img/svg_icon/4.svg" alt="">
                         </div>
-                        <a href="jobs.html"><h3>Snack Studio</h3></a>
-                        <p> <span>50</span> Available position</p>
+                        <a href="jobs.html"><h3>Companie2</h3></a>
+                       
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
@@ -264,8 +142,8 @@
                         <div class="thumb">
                             <img src="img/svg_icon/3.svg" alt="">
                         </div>
-                        <a href="jobs.html"><h3>Snack Studio</h3></a>
-                        <p> <span>50</span> Available position</p>
+                        <a href="jobs.html"><h3>Companie3</h3></a>
+                   
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-6">
@@ -273,8 +151,8 @@
                         <div class="thumb">
                             <img src="img/svg_icon/1.svg" alt="">
                         </div>
-                        <a href="jobs.html"><h3>Snack Studio</h3></a>
-                        <p> <span>50</span> Available position</p>
+                        <a href="jobs.html"><h3>Companie4</h3></a>
+                  
                     </div>
                 </div>
             </div>
@@ -287,16 +165,16 @@
             <div class="row">
                 <div class="col-lg-5 offset-lg-1 col-md-6">
                     <div class="searching_text">
-                        <h3>Looking for a Job?</h3>
-                        <p>We provide online instant cash loans with quick approval </p>
-                        <a href="#" class="boxed-btn3">Browse Job</a>
+                        <h3>À la recherche d'un service?</h3>
+                        <p>Nous fournissons des prêts de service instantanés en ligne avec une approbation rapide</p>
+                        <a href="{{ path('app_categories')}}" class="boxed-btn3">Parcourir les catégories</a>
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1 col-md-6">
                     <div class="searching_text">
-                        <h3>Looking for a Expert?</h3>
-                        <p>We provide online instant cash loans with quick approval </p>
-                        <a href="#" class="boxed-btn3">Post a Job</a>
+                        <h3>À la recherche d'un Trvailleur</h3>
+                        <p>Nous fourrnissons des travailleurs dans le domaine que tu plait </p>
+                        <a href="#" class="boxed-btn3">Avoir un service</a>
                     </div>
                 </div>
             </div>
@@ -310,7 +188,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title text-center mb-40">
-                        <h3>Testimonial</h3>
+                        <h3>Citations</h3>
                     </div>
                 </div>
                 <div class="col-xl-12">
@@ -326,8 +204,8 @@
                                             </div>
                                         </div>
                                         <div class="info">
-                                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering through animal welfare when people might depend on livestock as their only source of income or food.</p>
-                                            <span>- Micky Mouse</span>
+                                            <p>“La chance aide parfois, le travail toujours.”</p>
+                                            <span>- Robert Sabatier</span>
                                         </div>
                                     </div>
                                 </div>

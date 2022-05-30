@@ -1,70 +1,74 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Metier;
-use App\Entity\Demande;
-use App\Form\DetailType;
-use App\Form\Detail2Type;
+
+use App\Entity\Comentaire;
 use App\Entity\Travailleur;
-use App\Repository\DetailRepository;
-use App\Repository\TravailleurRepository;
+use App\Form\CommentaireType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class DetailController extends AbstractController
+class CommentaireController extends AbstractController
 {
     /**
-     * @Route("/detail", name="app_detail")
+     * @Route("/commentaire", name="app_commentaire")
      */
     public function index(): Response
     {
-        return $this->render('detail/index.html.twig', [
-            'controller_name' => 'DetailController',
+        return $this->render('commentaire/com.html.twig', [
+            'controller_name' => 'CommentaireController',
         ]);
     }
 
 
- 
- /**
-     * @Route("/trav/{id}", name="app_travailleur")
+
+
+
+    /**
+     * @Route("ajouter/trav/{id}", name="app_comentaire")
      */
     
     public function detail($id, SluggerInterface $slugger,Request $request): Response
     {
+         
+        $nb = $request->request->get('nb'); //method POST
+        $trav=$this->getDoctrine()->getRepository(Travailleur::class)->find($id) ;
+        $comm= $trav->getComentaires();
+
+
         $travailleur=$this->getDoctrine()->getRepository(Travailleur::class)->find($id) ;
         
 
-        $demande = new Demande();
-    $form = $this->createForm(DetailType::class,$demande);
+        $commantaire = new Comentaire();
+    $form = $this->createForm(CommentaireType::class,$commantaire);
         $form->handleRequest($request);
 
     
       
         if ($form->isSubmitted() && $form->isValid()) {
            
-            $demande = $form->getData();
+            $commantaire = $form->getData();
           
               
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($demande);
+            $em->persist($commantaire);
             $em->flush();
              
             // ... perform some action, such as saving the task to the database
              
-            return $this->redirectToRoute('app_list_service');
+            return $this->redirectToRoute('app_comentaire');
         }
         // return $this->render('produit/ajout.html.twig', ["monform" => $form->createView()]);
 
    
-        return $this->render('detail/detail.html.twig', ["travailleur" => $travailleur,
+        return $this->render('commentaire/com.html.twig', ["travailleur" => $travailleur,
     
-        'monform' => $form->createView(),
+        'monform' => $form->createView(),"comt"=> $comm,"nb" =>$nb ,
     ]);
-    }
 
 
 
@@ -72,16 +76,5 @@ class DetailController extends AbstractController
 
 
 
-
-
-
-
-
-
-
-    
-
-
-
-    
+}
 }

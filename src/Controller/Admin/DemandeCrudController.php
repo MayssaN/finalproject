@@ -2,29 +2,32 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use App\Entity\Demande;
+use App\Entity\Travailleur;
+use App\Entity\Utilisateur;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class UserCrudController extends AbstractCrudController
+class DemandeCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return User::class;
+        return Demande::class;
     }
 
     
     public function configureFields(string $pageName): iterable
     {
         return [
-         
+  
+               
+            TextField::new('message'),
+            TextField::new('addresse'),
             TextField::new('nom'),
             TextField::new('email'),
-            TextField::new('password'),
-            ArrayField::new('roles') , 
-  
+            TextField::new('travailleur'),
+            TextField::new('utilisateur'),
         ];
     }
     

@@ -1,3 +1,4 @@
+
 {% extends 'base3.html.twig' %}
 
 
@@ -31,6 +32,15 @@
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
                                             <p> <i class="fa fa-map-marker"></i> {{travailleur.lieu}}</p>
+                                          
+                                        </div>
+                                         <div class="location">
+                                          
+                                            <p> <i class="fa fa-envelope-o"></i> {{travailleur.email}}</p>
+                                        </div>
+                                          <div class="location">
+                                          
+                                            <p> <i class="fa fa-phone"></i> {{travailleur.telph}}</p>
                                         </div>
                                      
                                     </div>
@@ -42,73 +52,84 @@
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
                             <h4>description</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
-                            <p>Variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                            <p> {{travailleur.description}} </p>
                         </div>
                         <div class="single_wrap">
                             <h4>Formation</h4>
                             <ul>
-                                <li>The applicants should have experience in the following areas.
+                                <li>{{travailleur.formation}}
                                 </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
+                              
                             </ul>
                         </div>
                         <div class="single_wrap">
                             <h4>Expérience professionelles</h4>
                             <ul>
-                                <li>The applicants should have experience in the following areas.
+                                <li>{{travailleur.experiance}}
                                 </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
+                              
                             </ul>
                         </div>
                         <div class="single_wrap">
                             <h4>conditions</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                            <p>{{travailleur.condi}}</p>
                         </div>
                     </div>
-                    <div class="apply_job_form white-bg">
-     
-                        <h4>Avoir le service</h4>
-                        <form action="#">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="input_field">
-                                        <input type="text" placeholder="Nom & Prenom">
+                
+                   <div class="apply_job_form white-bg">
+                        <h4>Avoir le service </h4>
+                        
+                            <div class="form">
+                                
+                                
+                               {{ form_start(monform) }}
+                                 
+                                     <div class="col-md-12">
+                                        <div class="input_field">
+                                           {{ form_widget(monform.email) }}
+                                         </div>
                                     </div>
-                                </div>
+                               
+                                  <div class="col-md-12">
+                                     <div class="input_field">
+                                          {{ form_widget(monform.addresse) }}
+                                      </div>
+                                  </div>
+                                     <div class="col-md-12">
+                                     <div class="input_field">
+                                          {{ form_widget(monform.message) }}
+                                      </div>
+                                  </div>
+                                    
+                                           {{form_widget(monform.travailleur,{'value':travailleur.id}) }}
+                                
+                                
+                                     
+                                          
+                                        
+                                               {{ form_row(monform.utilisateur,{'value':app.user.id})}}
+
+                                         
+                                    
+  
 
                                 
-                                <div class="col-md-6">
-                                    <div class="input_field">
-                                        <input type="text" placeholder="Email">
-                                    </div>
-                                </div>
-                                 <div class="col-md-12">
-                                    <div class="input_field">
-                                        <input type="text" placeholder="Adresse ">
-                                    </div>
-                                </div>
-
+                                      <input type="submit"   class="boxed-btn3 w-100" value="Ajouter">
                                
-                              
-                                <div class="col-md-12">
-                                    <div class="input_field">
-                                        <textarea name="#" id="" cols="30" rows="10" placeholder="message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="submit_btn">
-                                        <button class="boxed-btn3 w-100" type="submit">avoir</button>
-                                    </div>
-                                </div>
+                               
+                                 {{ form_end(monform) }}
+
                             </div>
-                        </form>
+                        
+                        
+
                     </div>
+                   
                 </div>
+
+                    
+                    
+                    
                 <div class="col-lg-4">
                     <div class="job_sumary">
                         <div class="summery_header">
@@ -123,18 +144,53 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="share_wrap d-flex">
-                        <span>Share at:</span>
-                        <ul>
-                            <li><a href="#"> <i class="fa fa-facebook"></i></a> </li>
-                            <li><a href="#"> <i class="fa fa-google-plus"></i></a> </li>
-                            <li><a href="#"> <i class="fa fa-twitter"></i></a> </li>
-                            <li><a href="#"> <i class="fa fa-envelope"></i></a> </li>
-                        </ul>
-                    </div>
                  
+                 
+
+                         <div class="share_wrap d-flex">
+                        <span>Voir les Comaintaires </span>
+                        <ul>
+                            <li><a href="{{ path('app_comentaire',{'id':travailleur.id})}}"> <i class="fa fa-plus"></i></a> </li>
+                           
+                    </div>
+
                 </div>
+
+                  
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
             </div>
         </div>
     </div>
 {% endblock %}
+
+
+   

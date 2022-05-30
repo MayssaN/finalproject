@@ -28,9 +28,14 @@ class TravailleurCrudController extends AbstractCrudController
             TextField::new('prenom'),
                
             TextField::new('lieu'),
+            TextField::new('formation'),
+            TextField::new('description'),
+            TextField::new('experiance'),
+            TextField::new('condi'),
             TextField::new('email'),
             IntegerField::new('telph'),
             AssociationField::new('metier'),
+           
            
 
         ];
